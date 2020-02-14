@@ -90,6 +90,7 @@ def predict_fn(input_data, model):
     #       be a numpy array which contains a single integer which is either 1 or 0
 
     #result = None
-    result = round(model.predict(data))
+    with torch.no_grad():
+        result = round(model.forward(data))
 
     return result
