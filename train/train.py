@@ -87,7 +87,7 @@ def train(model, train_loader, epochs, optimizer, loss_fn, device):
             optimizer.step() # Take an update step and few the new weights
             
             # -----
-            total_loss += loss.data.item() # ??? total_loss += loss.item()
+            total_loss += loss.item()
         print("Epoch: {}, BCELoss: {}".format(epoch, total_loss / len(train_loader)))
 
 
