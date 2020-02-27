@@ -77,8 +77,7 @@ def predict_fn(input_data, model):
 
     # Using data_X and data_len we construct an appropriate input tensor. Remember
     # that our model expects input data of the form 'len, review[500]'.
-    data_pack = np.hstack((data_len, data_X))
-    data_pack = data_pack.reshape(1, -1)
+    data_pack = np.hstack((data_len, data_X)).reshape(1, -1)
     
     data = torch.from_numpy(data_pack)
     data = data.to(device)
@@ -92,6 +91,6 @@ def predict_fn(input_data, model):
     #result = None
     out = model.forward(data)
     #result = round(float(out.cpu().detach().numpy().decode('utf-8'))) # "'numpy.ndarray' object has no attribute 'decode'"
-    result = out.cpu().detach().numpy().round()
+    result = out.cpu().detach().numpy()#.round()
     
     return result
