@@ -90,7 +90,8 @@ def predict_fn(input_data, model):
     #       be a numpy array which contains a single integer which is either 1 or 0
 
     #result = None
-    out = model(data)
-    result = out.cpu().detach().numpy()
-
+    out = model.forward(data)
+    #result = round(float(out.cpu().detach().numpy().decode('utf-8'))) # "'numpy.ndarray' object has no attribute 'decode'"
+    result = out.cpu().detach().numpy().round()
+    
     return result
